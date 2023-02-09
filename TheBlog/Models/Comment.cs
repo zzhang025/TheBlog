@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
+using TheBlog.Models.Enum;
 
 namespace TheBlog.Models
 {
@@ -8,7 +9,7 @@ namespace TheBlog.Models
 	{
 		public int Id { get; set; }
 		public int PostId { get; set; }
-		public string AuthorId { get; set; }
+		public string BlogUserId { get; set; }
 		public string ModeratorId { get; set; }
 
 		[Required]
@@ -38,10 +39,12 @@ namespace TheBlog.Models
         [Display(Name = "Moderated Comment")]
         public string ModeratedBody { get; set; }
 
+        public ModerationType ModerationType { get; set; }  
+
         // Navigation Properties
         public virtual Post Post { get; set; }
-        public virtual IdentityUser Author { get; set; }
-        public virtual IdentityUser Moderator { get; set; }
+        public virtual BlogUser BlogUser { get; set; }
+        public virtual BlogUser Moderator { get; set; }
     }
 }
 
